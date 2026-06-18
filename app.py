@@ -195,5 +195,10 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
                 resumen_cat = pd.DataFrame({"Frecuencia": conteo_cat, "Porcentaje (%)":
                                             proporcion_cat})
                 st.dataframe(resumen_cat, use_container_width=True)
+            with col_g2:
+                fig2, ax2 = plt.subplots(figsize=(6, 3))
+                sns.countplot(data=df_procesado, x=var_cat_select, palette="Set2", ax=ax2)
+                st.pyplot(fig2)
+                
                 
 
