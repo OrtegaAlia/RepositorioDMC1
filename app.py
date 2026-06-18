@@ -117,4 +117,73 @@ elif opcion_menu == "Módulo 2: Carga de Datos":
     else:
         st.warning("⚠️ Por favor, carga un archivo CSV en este módulo para habilitar los análisis del EDA.")
 
+elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
+    st.title("🔬 Core Analítico: Exploración en Profundidad")
+    st.markdown("---")
+    
+    if st.session_state['raw_data'] is None:
+        st.error("🛑 Bloqueado: Primero debes cargar el archivo CSV en el **Módulo 2: Carga de Datos**.")
+    else:
+        # Instanciar nuestra clase POO con los datos cargados
+        analizador = DataAnalyzer(st.session_state['raw_data'])
+        df_procesado = analizador.df
+        num_cols, cat_cols = analizador.clasificar_variables()
+        
+        # Definición de pestañas (Tabs) para ordenar los 10 ítems exigidos
+        tab1, tab2, tab3, tab4, tab5 = st.tabs([
+            "📊 1 a 3: Estructura y Resumen",
+            "🔍 4 a 6: Faltantes y Distribución",
+            "🔀 7 y 8: Relaciones Bivariadas",
+            "🎛️ 9: Filtro Paramétrico",
+            "💡 10: Hallazgos Clave"
+        ])
+        
+        # ----------------------------------------------------------------------
+        # TAB 1: ÍTEMS 1, 2 Y 3 (Estructura Base)
+        # ----------------------------------------------------------------------
+        with tab1:
+            st.header("Ítem 1: Información General del Dataset")
+            col_info_txt, col_info_tabla = st.columns(2)
+            with col_info_txt:
+                st.text_area("Estructura interna (df.info())", analizador.obtener_info_buffer(), height=250)
+            with col_info_tabla:
+                st.write("Tipos de datos detectados:")
+                st.dataframe(df_procesado.dtypes.astype(str).to_frame(name="Tipo de Dato"), use_container_width=True)
+                
+            st.markdown("---")
+            st.header("Ítem 2: Clasificación de Variables mediante Funciones POO")
+            col_c1, col_c2 = st.columns(2)
+            col_c1.info(f"**Variables Numéricas ({len(num_cols)}):** \n {', '.join(num_cols)}")
+            col_c2.success(f"**Variables Categóricas ({len(cat_cols)}):** \n {', '.join(cat_cols)}")
+            
+            st.markdown("---")
+            st.header("Ítem 3: Estadísticas Descriptivas Globales")
+            st.write("Análisis estadístico de tendencia central y dispersión (.describe()):")
+            st.dataframe(df_procesado.describe(), use_container_width=True)
+            st.caption("💡 Tip analítico: Revisa los valores máximos y mínimos para notar presencia de anomalías u outliers.")
 
+        # ----------------------------------------------------------------------
+        # TAB 2: ÍTEMS 4, 5 Y 6 (Distribuciones Univariadas)
+        # ----------------------------------------------------------------------
+        with tab2:
+            st.header("Ítem 4: Análisis de Valores Faltantes (Nulos)")
+            df_nulos = analizador.obtener_faltantes()
+            if not df_nulos.empty:
+                st.dataframe(df_nulos, use_container_width=True)
+                st.warning("Se detectaron celdas vacías. Esto requiere una estrategia de imputación antes de entrenar modelos.")
+            else:
+                st.success("🎉 ¡Perfecto! El dataset no contiene registros nulos en ninguna columna.")
+                
+            st.markdown("---")
+            st.header("Ítem 5: Distribución de Variables Numéricas")
+            # Widget Selectbox para cambiar el gráfico dinámicamente
+            var_num_select = st.selectbox("Elige una variable numérica para ver su histograma:", num_cols, key="item5_select")
+            
+            fig, ax = plt.subplots(figsize=(7, 3))
+            sns.histplot(df_procesado[var_num_select], kde=True, color="skyblue", ax=ax)
+            ax.set_title(f"Distribución de la Variable: {var_num_select}")
+            st.pyplot(fig)
+            st.write(f"**Media:** {df_procesado[var_num_select].mean():.2f} | **Mediana:** {df_procesado[var_num_select].median():.2f}")
+            
+            st.markdown("---")
+            st.header("Ítem 6: Análisis de Variables Categóricas")
