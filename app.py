@@ -259,6 +259,28 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
             
             st.markdown("#### Filtros del Subconjunto de Datos")
             col_f1, col_f2 = st.columns(2)
+            with col_f1:
+                min_inc, max_inc = float(df_procesado['Income'].min()),
+                float(df_procesado['Income'].max())
+                rango_ingreso = st.slider("Rango de Ingresos Mensuales (Income):", min_inc, max_inc, (min_inc, max_inc))
+            with col_f2:
+                activar_filtro_verificacion = st.checkbox("Mostrar solo clientes con primas altas (Mayor al promedio)")
+                df_filtrado = df_procesado[
+                (df_procesado['Income'] >= rango_ingreso[0]) &
+                (df_procesado['Income'] <= rango_ingreso[1])
+                ]
+            if activar_filtro_verificacion:
+                promedio_prima = df_procesado['premium'].mean()
+                df_filtrado = df_filtrado[df_filtrado['premium'] > promedio_prima]
+            st.write(f"Registros encontrados que coinciden con los filtros: {df_filtrado.shape[0]}")
+            st.dataframe(df_filtrado[columnas_usuario].head(50), use_container_width=True)
+            
+                
+                
+                                          
+                
+                
+            
             
             
             
