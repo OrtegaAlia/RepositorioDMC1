@@ -255,8 +255,7 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
         with tab4:
             st.header("Ítem 9: Consulta y Exploración Basada en Parámetros Dinámicos")
             st.write("Usa los filtros inferiores para aislar segmentos específicos y explorar correlaciones cruzadas.")
-            columnas_usuario = st.multiselect("Elige qué columnas deseas visualizar en la tabla
-                                              dinámica:", df_procesado.columns.tolist(), default=df_procesado.columns.tolist()[:4])
+            columnas_usuario = st.multiselect("Elige qué columnas deseas visualizar en la tabla dinámica:", df_procesado.columns.tolist(), default=df_procesado.columns.tolist()[:4])
             
             st.markdown("#### Filtros del Subconjunto de Datos")
             col_f1, col_f2 = st.columns(2)
