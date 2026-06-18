@@ -78,10 +78,10 @@ if opcion_menu == "Módulo 1: Home":
         )
 
     with col_der:
-        st.info("👤 **Información del Autor**\n\n"
-                "**Nombre:** Alia Ortega Alvarado\n\n"
-                "**Especialización:** Python for Analytics\n\n"
+        st.info("👤 **Información del Autor**\n"
+                "**Nombre:** Alia Ortega Alvarado\n"
+                "**Especialización:** Python for Analytics\n"
                 "**Año:** 2026")
         
-        st.success("🛠️ **Tecnologías Utilizadas**\n\n"
-                   "- Python 3\n- Streamlit\n- Pandas & NumPy\n- Matplotlib & Seaborn")
+        st.success("🛠️ **Tecnologías Utilizadas**\n"
+                   "- Python \n- Streamlit\n- Pandas & NumPy\n- Matplotlib & Seaborn")
