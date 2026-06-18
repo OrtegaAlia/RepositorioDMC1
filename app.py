@@ -78,7 +78,7 @@ if opcion_menu == "Módulo 1: Home":
         )
 
     with col_der:
-        st.info("👤 **Información del Autor**\n"
+        st.info("👤 **Información del Autor**\n\n"
                 "**Nombre:** Alia Ortega Alvarado\n"
                 "**Especialización:** Python for Analytics\n"
                 "**Año:** 2026")
