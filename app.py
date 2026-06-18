@@ -85,3 +85,36 @@ if opcion_menu == "Módulo 1: Home":
         
         st.success("🛠️ **Tecnologías Utilizadas**\n"
                    "- Python \n- Streamlit\n- Pandas & NumPy\n- Matplotlib & Seaborn")
+
+elif opcion_menu == "Módulo 2: Carga de Datos":
+    st.title("📂 Gestión e Ingreso de Datos")
+    st.markdown("---")
+    
+    archivo_cargado = st.file_uploader("Sube el archivo CSV del caso de estudio (InsuranceCompany.csv)", type=["csv"])
+    
+    if archivo_cargado is not None:
+        try:
+            # Leer el archivo y guardarlo en el session_state
+            df_input = pd.read_csv(archivo_cargado)
+            st.session_state['raw_data'] = df_input
+            st.toast("¡Archivo cargado con éxito!", icon="✅")
+        except Exception as e:
+            st.error(f"Error al leer el archivo: {e}")
+            
+    # Validar si el archivo ya fue cargado
+    if st.session_state['raw_data'] is not None:
+        df = st.session_state['raw_data']
+        st.success("Dataset activo en la memoria del aplicativo.")
+        
+        # Mostrar Dimensiones
+        col_filas, col_cols = st.columns(2)
+        col_filas.metric("Total de Filas (Registros)", df.shape[0])
+        col_cols.metric("Total de Columnas (Variables)", df.shape[1])
+        
+        # Vista previa (Head)
+        st.subheader("👀 Vista previa de los datos superiores (Head)")
+        st.dataframe(df.head(10), use_container_width=True)
+    else:
+        st.warning("⚠️ Por favor, carga un archivo CSV en este módulo para habilitar los análisis del EDA.")
+
+
