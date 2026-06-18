@@ -143,7 +143,6 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
         # ----------------------------------------------------------------------
         with tab1:
             st.header("Ítem 1: Información General del Dataset")
-            st.dataframe(analyzer.obtener_info_general())
             with col_info_tabla:
                 st.write("Tipos de datos detectados:")
                 st.dataframe(df_procesado.dtypes.astype(str).to_frame(name="Tipo de Dato"), use_container_width=True)
