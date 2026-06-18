@@ -160,7 +160,7 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
             st.header("Ítem 3: Estadísticas Descriptivas Globales")
             st.write("Análisis estadístico de tendencia central y dispersión (.describe()):")
             st.dataframe(df_procesado.describe(), use_container_width=True)
-            st.caption("💡 Tip analítico: Revisa los valores máximos y mínimos para notar presencia de anomalías u outliers.")
+            st.caption("💡 Tip analítico: Revisa los valores máximos y mínimos para notar presencia de anomalías.")
 
         # ----------------------------------------------------------------------
         # TAB 2: ÍTEMS 4, 5 Y 6 (Distribuciones Univariadas)
@@ -187,3 +187,13 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
             
             st.markdown("---")
             st.header("Ítem 6: Análisis de Variables Categóricas")
+            var_cat_select = st.selectbox("Elige una variable categórica para analizar:", cat_cols, key="item6_select")
+            col_g1, col_g2 = st.columns([1, 2])
+            with col_g1:
+                conteo_cat = df_procesado[var_cat_select].value_counts()
+                proporcion_cat = df_procesado[var_cat_select].value_counts(normalize=True) * 100
+                resumen_cat = pd.DataFrame({"Frecuencia": conteo_cat, "Porcentaje (%)":
+                                            proporcion_cat})
+                st.dataframe(resumen_cat, use_container_width=True)
+                
+
