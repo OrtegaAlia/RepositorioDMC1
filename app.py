@@ -208,14 +208,16 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
             st.write("Comportamiento de métricas cuantitativas segmentadas por si el cliente renovó o no (renewal).")
             col_analisis_biv = 'age_in_years' 
             if 'age_in_years' in df_procesado.columns 
-            else
+            else:
             num_cols[0]
             var_biv_num = st.selectbox("Selecciona la métrica numérica:", num_cols +
             (['age_in_years'] 
             if 'age_in_years' in df_procesado.columns 
-            else []), index=len(num_cols)
+             else:
+             []), index=len(num_cols)
             if 'age_in_years' in df_procesado.columns 
-            else 0)
+                                       else:
+                                       0)
             
             if 'renewal' in df_procesado.columns:
             fig3, ax3 = plt.subplots(figsize=(7, 3.5))
