@@ -285,6 +285,13 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
                                 df_procesado.columns else None, alpha=0.7, ax=ax5)
                 ax5.set_title("Relación entre Ingreso Mensual y Valor de la Prima")
                 st.pyplot(fig5)
+            st.markdown("---")
+            st.subheader("💡 5 Conclusiones del Producto Analítico")
+            st.write("Las Personas de mayor edad tienden mantener una mayor tasa de renovación de seguros.\n"
+                     "Los clientes con pagos acumulados en las variables mayores a 6 meses tarde pesentan una actitud negativa a renovar el seguro.\n"
+                     "Los clientes asegurados mediante los canales de captación de la Zona Urbana tienen mayor cantidad de renvaciones")
+                     
+            
                 
                 
                 
