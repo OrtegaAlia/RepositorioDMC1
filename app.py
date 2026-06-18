@@ -207,7 +207,7 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
             st.header("Ítem 7: Análisis Bivariado (Numérico vs Categórico Target)")
             st.write("Comportamiento de métricas cuantitativas segmentadas por si el cliente renovó o no (renewal).")
             col_analisis_biv = 'age_in_years' 
-            if 'age_in_years' in df_procesado.columns 
+            if 'age_in_years' in df_procesado.columns: 
             else:
             num_cols[0]
             var_biv_num = st.selectbox("Selecciona la métrica numérica:", num_cols +
