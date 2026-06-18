@@ -237,17 +237,17 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
                 st.error(
                     "No se encontró la columna objetivo 'renewal' en tus datos para realizar esta segmentación."
                 )
-         st.markdown("---")
-         st.header("Ítem 8: Análisis Bivariado (Categórico vs Categórico)")
-         var_biv_cat = st.selectbox("Selecciona una característica categórica:", [c for c in cat_cols
+            st.markdown("---")
+            st.header("Ítem 8: Análisis Bivariado (Categórico vs Categórico)")
+            var_biv_cat = st.selectbox("Selecciona una característica categórica:", [c for c in cat_cols
                                                                                  if c != 'renewal'])
-         if 'renewal' in df_procesado.columns:
-            fig4, ax4 = plt.subplots(figsize=(7, 3.5))
-            sns.countplot(data=df_procesado, x=var_biv_cat, hue='renewal', palette="Set1", ax=ax4)
-            ax4.set_title(f"Relación cruzada entre {var_biv_cat} y Renewal")
-            st.pyplot(fig4)
-         else:
-             st.error("Se requiere la variable 'renewal' para cruzar frecuencias.")
+            if 'renewal' in df_procesado.columns:
+              fig4, ax4 = plt.subplots(figsize=(7, 3.5))
+              sns.countplot(data=df_procesado, x=var_biv_cat, hue='renewal', palette="Set1", ax=ax4)
+              ax4.set_title(f"Relación cruzada entre {var_biv_cat} y Renewal")
+              st.pyplot(fig4)
+            else:
+               st.error("Se requiere la variable 'renewal' para cruzar frecuencias.")
 
         # ----------------------------------------------------------------------
         # TAB 4: ÍTEM 9 (Parámetros Dinámicos Seleccionables)
