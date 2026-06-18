@@ -237,6 +237,8 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
                 st.error(
                     "No se encontró la columna objetivo 'renewal' en tus datos para realizar esta segmentación."
                 )
+        st.markdown("---")
+        st.header("Ítem 8: Análisis Bivariado (Categórico vs Categórico)")
 
 
 
