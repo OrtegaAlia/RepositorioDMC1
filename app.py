@@ -260,8 +260,7 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
             st.markdown("#### Filtros del Subconjunto de Datos")
             col_f1, col_f2 = st.columns(2)
             with col_f1:
-                min_inc, max_inc = float(df_procesado['Income'].min()),
-                float(df_procesado['Income'].max())
+                min_inc, max_inc = float(df_procesado['Income'].min()), float(df_procesado['Income'].max())
                 rango_ingreso = st.slider("Rango de Ingresos Mensuales (Income):", min_inc, max_inc, (min_inc, max_inc))
             with col_f2:
                 activar_filtro_verificacion = st.checkbox("Mostrar solo clientes con primas altas (Mayor al promedio)")
