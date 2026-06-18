@@ -273,8 +273,22 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
                 df_filtrado = df_filtrado[df_filtrado['premium'] > promedio_prima]
             st.write(f"Registros encontrados que coinciden con los filtros: {df_filtrado.shape[0]}")
             st.dataframe(df_filtrado[columnas_usuario].head(50), use_container_width=True)
-            
+
+        # ----------------------------------------------------------------------
+        # TAB 5: ÍTEM 10 Y CONCLUSIONES FINALES (Insights de Negocio)
+        # ----------------------------------------------------------------------
+        with tab5:
+            st.header("Ítem 10: Hallazgos Clave del Análisis de Datos")
+            if 'Income' in df_procesado.columns and 'premium' in df_procesado.columns:
+                fig5, ax5 = plt.subplots(figsize=(8, 4))
+                sns.scatterplot(data=df_procesado, x='Income', y='premium', hue='renewal' if 'renewal' in
+                                df_procesado.columns else None, alpha=0.7, ax=ax5)
+                ax5.set_title("Relación entre Ingreso Mensual y Valor de la Prima")
+                st.pyplot(fig5)
                 
+                
+                
+            
                 
                                           
                 
@@ -282,12 +296,6 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
             
             
             
-            
-
-
-
-                
-                
                 
                               
             
