@@ -41,3 +41,16 @@ class DataAnalyzer:
             'Porcentaje (%)': (self.df.isnull().sum() / len(self.df)) * 100
         })
         return df_nulls[df_nulls['Valores Nulos'] > 0]
+
+st.set_page_config(page_title="Insurance Analytics App", layout="wide", page_icon="📊")
+
+# Menú de Navegación Lateral (Sidebar)
+st.sidebar.title("🔍 Navegación")
+opcion_menu = st.sidebar.radio(
+    "Selecciona un Módulo:",
+    ["Módulo 1: Home", "Módulo 2: Carga de Datos", "Módulo 3: EDA (Análisis Exploratorio)"]
+)
+
+# Inicializar el dataset en el estado de la sesión para mantenerlo entre pestañas
+if 'raw_data' not in st.session_state:
+    st.session_state['raw_data'] = None
