@@ -239,6 +239,8 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
                 )
         st.markdown("---")
         st.header("Ítem 8: Análisis Bivariado (Categórico vs Categórico)")
+        var_biv_cat = st.selectbox("Selecciona una característica categórica:", [c for c in cat_cols
+                                                                                 if c != 'renewal'])
 
 
 
