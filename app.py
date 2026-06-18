@@ -199,6 +199,30 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
                 fig2, ax2 = plt.subplots(figsize=(6, 3))
                 sns.countplot(data=df_procesado, x=var_cat_select, palette="Set2", ax=ax2)
                 st.pyplot(fig2)
-                
+
+        # ----------------------------------------------------------------------
+        # TAB 2: ÍTEMS 4, 5 Y 6 (Distribuciones Univariadas)
+        # ----------------------------------------------------------------------
+        with tab3:
+            st.header("Ítem 7: Análisis Bivariado (Numérico vs Categórico Target)")
+            st.write("Comportamiento de métricas cuantitativas segmentadas por si el cliente renovó
+                     o no (renewal).")
+            col_analisis_biv = 'age_in_years' if 'age_in_years' in df_procesado.columns else
+            num_cols[0]
+            var_biv_num = st.selectbox("Selecciona la métrica numérica:", num_cols +
+            (['age_in_years'] if 'age_in_years' in df_procesado.columns else []), index=len(num_cols)
+            if 'age_in_years' in df_procesado.columns else 0)
+            
+            if 'renewal' in df_procesado.columns:
+            fig3, ax3 = plt.subplots(figsize=(7, 3.5))
+            sns.boxplot(data=df_procesado, x='renewal', y=var_biv_num, palette="PRGn", ax=ax3)
+            ax3.set_title(f"Diagrama de Caja de {var_biv_num} según Renovación")
+            st.pyplot(fig3)
+
+            else:
+            st.error("No se encontró la columna objetivo 'renewal' en tus datos para realizar esta
+            segmentación.")
+            
+            
                 
 
