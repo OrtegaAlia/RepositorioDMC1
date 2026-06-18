@@ -201,7 +201,7 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
                 st.pyplot(fig2)
 
         # ----------------------------------------------------------------------
-        # TAB 2: ÍTEMS 7, Y 8 (Análisis Bivariado vs Target 'Renewal')
+        # TAB 3: ÍTEMS 7, Y 8 (Análisis Bivariado vs Target 'Renewal')
         # ----------------------------------------------------------------------
         with tab3:
             st.header("Ítem 7: Análisis Bivariado (Numérico vs Categórico Target)")
@@ -248,8 +248,21 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
             st.pyplot(fig4)
         else:
             st.error("Se requiere la variable 'renewal' para cruzar frecuencias.")
-        
 
+        # ----------------------------------------------------------------------
+        # TAB 4: ÍTEM 9 (Parámetros Dinámicos Seleccionables)
+        # ----------------------------------------------------------------------
+        with tab4:
+            st.header("Ítem 9: Consulta y Exploración Basada en Parámetros Dinámicos")
+            st.write("Usa los filtros inferiores para aislar segmentos específicos y explorar correlaciones cruzadas.")
+            columnas_usuario = st.multiselect("Elige qué columnas deseas visualizar en la tabla
+                                              dinámica:", df_procesado.columns.tolist(), default=df_procesado.columns.tolist()[:4])
+            
+            st.markdown("#### Filtros del Subconjunto de Datos")
+            col_f1, col_f2 = st.columns(2)
+            
+            
+            
 
 
 
