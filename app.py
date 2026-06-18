@@ -54,3 +54,34 @@ opcion_menu = st.sidebar.radio(
 
 if 'raw_data' not in st.session_state:
     st.session_state['raw_data'] = None
+
+
+if opcion_menu == "Módulo 1: Home":
+    st.title("📊 Aplicación Interactiva para el Análisis de Seguros")
+    st.markdown("---")
+    
+    col_izq, col_der = st.columns([2, 1])
+    
+    with col_izq:
+        st.subheader("🎯 Objetivo del Proyecto")
+        st.write(
+            "Esta herramienta analítica tiene como fin explorar y comprender las características "
+            "demográficas y de comportamiento de los clientes de una aseguradora. El foco principal "
+            "es identificar los patrones asociados con la **renovación de pólizas (columna `renewal`)**."
+        )
+        
+        st.subheader("📋 Sobre el Dataset (InsuranceCompany.csv)")
+        st.write(
+            "Contiene registros históricos de asegurados, incluyendo variables críticas como ingresos mensuales, "
+            "historial de retrasos de pagos en ventanas de tiempo (3, 6 y 12 meses), canal de captación del cliente, "
+            "puntuación de evaluación del cliente, monto de la prima y su estatus final de renovación."
+        )
+
+    with col_der:
+        st.info("👤 **Información del Autor**\n\n"
+                "**Nombre:** Alia Ortega Alvarado\n\n"
+                "**Especialización:** Python for Analytics\n\n"
+                "**Año:** 2026")
+        
+        st.success("🛠️ **Tecnologías Utilizadas**\n\n"
+                   "- Python 3\n- Streamlit\n- Pandas & NumPy\n- Matplotlib & Seaborn")
