@@ -219,8 +219,7 @@ elif opcion_menu == "Módulo 3: EDA (Análisis Exploratorio)":
             st.pyplot(fig3)
 
             else:
-            st.error("No se encontró la columna objetivo 'renewal' en tus datos para realizar esta
-            segmentación.")
+            st.error("No se encontró la columna objetivo 'renewal' en tus datos para realizar esta segmentación.")
             
             
                 
